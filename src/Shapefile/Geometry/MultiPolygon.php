@@ -109,7 +109,7 @@ class MultiPolygon extends GeometryCollection
             if (!isset($part['rings']) || !is_array($part['rings'])) {
                 throw new ShapefileException(Shapefile::ERR_INPUT_ARRAY_NOT_VALID);
             }
-            $Polygon = new Polygon(null, $this->closed_rings, $this->force_orientation);
+            $Polygon = new Polygon([], $this->closed_rings, $this->force_orientation);
             foreach ($part['rings'] as $part) {
                 if (!isset($part['points']) || !is_array($part['points'])) {
                     throw new ShapefileException(Shapefile::ERR_INPUT_ARRAY_NOT_VALID);
@@ -135,7 +135,7 @@ class MultiPolygon extends GeometryCollection
             $force_z = $this->wktIsZ($wkt);
             $force_m = $this->wktIsM($wkt);
             foreach (explode(')),((', substr($this->wktExtractData($wkt), 2, -2)) as $part) {
-                $Polygon = new Polygon(null, $this->closed_rings, $this->force_orientation);
+                $Polygon = new Polygon([], $this->closed_rings, $this->force_orientation);
                 foreach (explode('),(', $part) as $ring) {
                     $Linestring = new Linestring();
                     foreach (explode(',', $ring) as $wkt_coordinates) {
@@ -160,7 +160,7 @@ class MultiPolygon extends GeometryCollection
                 if (!is_array($part)) {
                     throw new ShapefileException(Shapefile::ERR_INPUT_GEOJSON_NOT_VALID, 'Wrong coordinates format');
                 }
-                $Polygon = new Polygon(null, $this->closed_rings, $this->force_orientation);
+                $Polygon = new Polygon([], $this->closed_rings, $this->force_orientation);
                 foreach ($part as $ring) {
                     if (!is_array($ring)) {
                         throw new ShapefileException(Shapefile::ERR_INPUT_GEOJSON_NOT_VALID, 'Wrong coordinates format');

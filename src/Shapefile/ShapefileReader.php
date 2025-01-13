@@ -974,7 +974,7 @@ class ShapefileReader extends Shapefile implements \Iterator
      */
     private function createPolygon($data)
     {
-        $MultiPolygon   = new MultiPolygon(null, $this->getOption(Shapefile::OPTION_POLYGON_CLOSED_RINGS_ACTION), $this->getOption(Shapefile::OPTION_POLYGON_OUTPUT_ORIENTATION));
+        $MultiPolygon   = new MultiPolygon([], $this->getOption(Shapefile::OPTION_POLYGON_CLOSED_RINGS_ACTION), $this->getOption(Shapefile::OPTION_POLYGON_OUTPUT_ORIENTATION));
         $Polygon        = null;
         $temp_state     = null;
         foreach ($data['geometry']['parts'] as $part) {
@@ -988,7 +988,7 @@ class ShapefileReader extends Shapefile implements \Iterator
                 if ($Polygon !== null) {
                     $MultiPolygon->addPolygon($Polygon);
                 }
-                $Polygon    = new Polygon(null, $this->getOption(Shapefile::OPTION_POLYGON_CLOSED_RINGS_ACTION), $this->getOption(Shapefile::OPTION_POLYGON_OUTPUT_ORIENTATION));
+                $Polygon    = new Polygon([], $this->getOption(Shapefile::OPTION_POLYGON_CLOSED_RINGS_ACTION), $this->getOption(Shapefile::OPTION_POLYGON_OUTPUT_ORIENTATION));
                 $temp_state = $is_clockwise;
             }
             $Polygon->addRing($Linestring);
