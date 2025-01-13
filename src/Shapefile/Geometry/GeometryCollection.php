@@ -45,7 +45,7 @@ abstract class GeometryCollection extends Geometry
      *
      * @param   \Shapefile\Geometry\Geometry[]  $geometries     Optional array of geometries to initialize the collection.
      */
-    public function __construct(array $geometries = null)
+    public function __construct(array $geometries = [])
     {
         if ($geometries !== null) {
             foreach ($geometries as $Geometry) {

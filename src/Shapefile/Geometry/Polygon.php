@@ -84,7 +84,7 @@ class Polygon extends MultiLinestring
      *                                                                      - Shapefile::ORIENTATION_COUNTERCLOCKWISE
      *                                                                      - Shapefile::ORIENTATION_UNCHANGED
      */
-    public function __construct(array $linestrings = null, $closed_rings = Shapefile::ACTION_CHECK, $force_orientation = Shapefile::ORIENTATION_COUNTERCLOCKWISE)
+    public function __construct(array $linestrings = [], $closed_rings = Shapefile::ACTION_CHECK, $force_orientation = Shapefile::ORIENTATION_COUNTERCLOCKWISE)
     {
         $this->closed_rings         = $closed_rings;
         $this->force_orientation    = $force_orientation;
